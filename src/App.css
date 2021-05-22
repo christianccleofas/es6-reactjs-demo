@@ -38,9 +38,21 @@
 }
 
 .body-wrapper {
-  padding: 2%;
+  padding-left: 5%;
 }
 
 .app-bar {
   background-color: #006241 !important;
+  position: fixed;
+}
+
+.order-item-name, .order-item-subTotal {
+  font-size: 1em; 
+  font-weight: 600;
+  color: #23423c;
+  letter-spacing: -1;
+}
+
+.MuiPaper-root.MuiDrawer-paper.MuiDrawer-paperAnchorRight.MuiPaper-elevation16 {
+  width: 20%;
 }

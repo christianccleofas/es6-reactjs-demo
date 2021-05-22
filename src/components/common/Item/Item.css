@@ -18,6 +18,46 @@
     background-color: #006241 !important;
 }
 
+.grp-btn {
+    background-color: #006241 !important;
+    box-shadow: none !important;
+    border: solid 1px #006241;
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 1.3em;
+    color: #fff;
+}
+
+.grp-btn-text {
+    padding: 0px 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.test {
+    background-color: #006241 !important;
+    color: #fff !important;
+}
+
+
+.grp-btn.dcs {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.grp-btn.inc {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.grp-txt {
+   box-shadow: none !important;
+   border: solid 1px #006241;
+   background-color: #fff;
+   font-size: 1.5em;
+}
+
 .item-wrapper {
     cursor: pointer;
 }
@@ -44,16 +84,22 @@
     color: #fff;
 }
 
+.details {
+    padding: 3%;
+}
+
 .item-name {
-    padding: 2%; 
-    font-size: 1.2em; 
+    display: inline-block;
+    flex: 1;
+    font-size: 1em; 
     font-weight: 600;
+    color: #23423c;
+    letter-spacing: -1;
 }
 
 .item-details-wrapper {
-    clear: both; 
-    text-align: center; 
-    padding: 2%;
+    flex: 1;
+    text-align: right;
 }
 
 .item-details-amount {
@@ -61,39 +107,47 @@
     width: 50%; 
     font-size: 2.1em; 
     font-weight: 600; 
-    text-align: left;
+    text-align: right;
 }
 
 .item-details-amount-discounted {
     clear: both; 
     display:inline-block; 
     width: 50%; 
-    text-align: left;
+    text-align: right;
 }
 
 .item-details-amount-dsc {
-    display: inline-block; 
-    width: 50%; 
-    font-size: 2.1em; 
+    font-size: 1.3em; 
     font-weight: 600; 
-    text-align: left;
+    text-align: right;
     color: #AD0101;
 }
 
 .item-details-amount-n-dsc {
-    display: inline-block; 
-    width: 35%; 
-    font-size: 1.1em; 
+    font-size: 0.8em; 
     font-weight: 600; 
-    text-align: left;
+    text-align: right;
     text-decoration: line-through;
 }
 
 .item-details-addToCart {
-    display: inline-block; 
-    width: 50%; 
-    text-align: right; 
-    vertical-align: text-bottom;
+    padding: 3%;
+    border-top: solid 1px #eee;
+    display: flex;
+    align-items: center;
+}
+
+.add-to-cart {
+    background: #006241;
+    border: 0;
+    color: white;
+    font-size: small;
+    font-weight: "400";
+    padding: "5px 25px";
+    box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
+    flex: 1;
+    text-transform: none;
 }
 
 .item-wrapper:hover {
