@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders learn react link 1`] = `
+<div
+  className="makeStyles-root-1"
+  id="root"
+>
+  <WithStyles(ForwardRef(AppBar))
+    className="app-bar"
+    position="static"
+  >
+    <WithStyles(ForwardRef(Toolbar))>
+      <WithStyles(ForwardRef(IconButton))
+        aria-label="menu"
+        className="makeStyles-menuButton-2"
+        color="inherit"
+        edge="start"
+      >
+        <Memo(ForwardRef(MenuIcon)) />
+      </WithStyles(ForwardRef(IconButton))>
+      <WithStyles(ForwardRef(Typography))
+        className="makeStyles-title-3"
+        variant="h6"
+      >
+        ES6 | React JS Demo
+      </WithStyles(ForwardRef(Typography))>
+      <CartBadge
+        closeCartDrawer={[Function]}
+        getOrderFromMenu={[Function]}
+        isCartDrawerOpen={false}
+        openCartDrawer={[Function]}
+        orderList={Array []}
+        removeItemFromCart={[Function]}
+      />
+    </WithStyles(ForwardRef(Toolbar))>
+  </WithStyles(ForwardRef(AppBar))>
+  <CartDrawer
+    closeCartDrawer={[Function]}
+    getOrderFromMenu={[Function]}
+    isCartDrawerOpen={false}
+    openCartDrawer={[Function]}
+    orderList={Array []}
+    removeItemFromCart={[Function]}
+  />
+  <div
+    className="body-wrapper"
+  >
+    <Menu
+      closeCartDrawer={[Function]}
+      getOrderFromMenu={[Function]}
+      isCartDrawerOpen={false}
+      openCartDrawer={[Function]}
+      orderList={Array []}
+      removeItemFromCart={[Function]}
+    />
+  </div>
+  <SnackbarFeedback
+    handleClose={[Function]}
+    isSnackbarFeedbackOpen={false}
+    openCartDrawer={[Function]}
+  />
+</div>
+`;

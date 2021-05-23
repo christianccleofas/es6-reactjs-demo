@@ -25,19 +25,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 export default function ButtonAppBar() {
   const classes = useStyles();
-  const [isCartDrawerOpen, setIsCartDrawerOpen] = React.useState(false);
   const [orderList, setOrderList] = React.useState([]);
+  const [isCartDrawerOpen, setIsCartDrawerOpen] = React.useState(false);
   const [isSnackbarFeedbackOpen, setIsSnackbarFeedbackOpen] = React.useState(false);
 
   // run();
 
   const openCartDrawer = () => setIsCartDrawerOpen(true); //opens cart drawer
   const closeCartDrawer = () => setIsCartDrawerOpen(false); //closes cart drawer
-
 
   const getOrderFromMenu = orderItem => {
     /* Adds item to the list of orders on the cart drawer when Add to Cart button is clicked */
@@ -67,11 +64,11 @@ export default function ButtonAppBar() {
   }
 
   const customProps = {
-    isCartDrawerOpen,
+    orderList,
     openCartDrawer,
     closeCartDrawer,
+    isCartDrawerOpen,
     getOrderFromMenu,
-    orderList,
     removeItemFromCart
   }
 
@@ -88,8 +85,8 @@ export default function ButtonAppBar() {
   const customSnackbarProps = {
     /* Snackbar props */
     handleClose,
+    openCartDrawer,
     isSnackbarFeedbackOpen,
-    openCartDrawer
   }
 
   return (

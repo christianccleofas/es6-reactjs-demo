@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Item />: Render Testing Should match snapshot. 1`] = `
+<div
+  className="container"
+>
+  <WithStyles(ForwardRef(Paper))
+    className="item-wrapper"
+    elevation={3}
+  >
+    <div
+      className="item-display-wrapper"
+    >
+      <img
+        alt="coffee-test"
+        className="item-display-image"
+        src="/assets/images/8e0b1749cfad49f085e3efff636aef58.webp"
+      />
+    </div>
+    <div
+      className="details"
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+        }
+      }
+    >
+      <div
+        className="item-name"
+      >
+        Test item
+      </div>
+      <div
+        className="item-details-wrapper"
+      >
+        <div
+          className="item-details-amount"
+        >
+          $3.66
+        </div>
+      </div>
+    </div>
+    <div
+      className="item-details-addToCart"
+    >
+      <div
+        style={
+          Object {
+            "flex": "1",
+          }
+        }
+      >
+        <WithStyles(ForwardRef(IconButton))
+          className="test"
+          onClick={[Function]}
+          size="small"
+        >
+          <Memo(ForwardRef(RemoveIcon))
+            fontSize="small"
+          />
+        </WithStyles(ForwardRef(IconButton))>
+        <span
+          className="grp-btn-text"
+        >
+          0
+        </span>
+        <WithStyles(ForwardRef(IconButton))
+          className="test"
+          onClick={[Function]}
+          size="small"
+        >
+          <Memo(ForwardRef(AddIcon))
+            fontSize="small"
+          />
+        </WithStyles(ForwardRef(IconButton))>
+      </div>
+      <WithStyles(WithStyles(ForwardRef(Button)))
+        className="add-to-cart"
+        disabled={true}
+        onClick={[Function]}
+        variant="contained"
+      >
+        Add to cart
+      </WithStyles(WithStyles(ForwardRef(Button)))>
+    </div>
+  </WithStyles(ForwardRef(Paper))>
+</div>
+`;
