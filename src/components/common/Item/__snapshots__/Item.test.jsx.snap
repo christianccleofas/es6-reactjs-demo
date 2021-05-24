@@ -1,11 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Item />: Render Testing Should match snapshot. 1`] = `
+exports[`<Item />: Component Testing <Item />: Conditional render testing Should match snapshot. 1`] = `
 <div
   className="container"
 >
   <WithStyles(ForwardRef(Paper))
     className="item-wrapper"
+    data-testid="paper"
     elevation={3}
   >
     <div
@@ -36,6 +37,7 @@ exports[`<Item />: Render Testing Should match snapshot. 1`] = `
       >
         <div
           className="item-details-amount"
+          data-testid="div-amount"
         >
           $3.66
         </div>
@@ -53,6 +55,7 @@ exports[`<Item />: Render Testing Should match snapshot. 1`] = `
       >
         <WithStyles(ForwardRef(IconButton))
           className="test"
+          data-testid="button-subtract"
           onClick={[Function]}
           size="small"
         >
@@ -62,11 +65,13 @@ exports[`<Item />: Render Testing Should match snapshot. 1`] = `
         </WithStyles(ForwardRef(IconButton))>
         <span
           className="grp-btn-text"
+          date-testid="span-qty"
         >
           0
         </span>
         <WithStyles(ForwardRef(IconButton))
           className="test"
+          data-testid="button-add"
           onClick={[Function]}
           size="small"
         >
