@@ -5,7 +5,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-// import {run} from './utils/main'
 import "./App.css";
 import _ from 'underscore';
 import CartBadge from './CartBadge/CartBadge';
@@ -30,8 +29,6 @@ export default function ButtonAppBar() {
   const [orderList, setOrderList] = React.useState([]);
   const [isCartDrawerOpen, setIsCartDrawerOpen] = React.useState(false);
   const [isSnackbarFeedbackOpen, setIsSnackbarFeedbackOpen] = React.useState(false);
-
-  // run();
 
   const openCartDrawer = () => setIsCartDrawerOpen(true); //opens cart drawer
   const closeCartDrawer = () => setIsCartDrawerOpen(false); //closes cart drawer

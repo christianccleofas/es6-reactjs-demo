@@ -1,7 +1,6 @@
 import React from 'react';
 import Badge from '@material-ui/core/Badge';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { IconButton } from '@material-ui/core';
 
 const CartBadge = ({ openCartDrawer, orderList }) => {
 	if (orderList && orderList.length) {

@@ -1,11 +1,10 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Drawer from '@material-ui/core/Drawer';
-import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import CloseIcon from '@material-ui/icons/Close';
 import "./CartDrawer.css";
-import _ from 'underscore';
 
 const CartDrawer = ({ isCartDrawerOpen, closeCartDrawer, orderList, removeItemFromCart }) => {
   const computeGrandTotal = () => {
