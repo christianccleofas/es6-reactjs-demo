@@ -10,12 +10,6 @@ import AddToCartButton from './AddToCartButton/AddToCartButton';
 
 const Item = ({ data, getOrderFromItem, orderList }) => {
 	const [qty, setQty] = React.useState(0);
-	React.useEffect(() => {
-		const findItemFromOrderList = _.findWhere(orderList, { name: data.name });
-		if (!findItemFromOrderList) {
-			setQty(0);
-		}
-	}, [orderList]);
 
 	const handleIncrease = () => {
 		setQty(qty + 1);
@@ -43,7 +37,6 @@ const Item = ({ data, getOrderFromItem, orderList }) => {
 				} else {
 					return price * this.qty;
 				}
-
 			},
 		}
 		getOrderFromItem(newOrderData);
@@ -84,7 +77,7 @@ const Item = ({ data, getOrderFromItem, orderList }) => {
 							<AddIcon fontSize="small" />
 						</IconButton>
 					</div>
-					<AddToCartButton className="add-to-cart" variant="contained" disabled={qty > 0 ? false : true} onClick={handleOrder}>
+					<AddToCartButton data-testid="button-add-to-cart" className="add-to-cart" variant="contained" disabled={qty > 0 ? false : true} onClick={handleOrder}>
 						Add to cart
           </AddToCartButton>
 				</div>

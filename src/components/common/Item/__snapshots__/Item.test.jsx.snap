@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Item />: Component Testing <Item />: Conditional render testing Should match snapshot. 1`] = `
+exports[`<Item />: Component Testing. <Item />: Conditional render testing. Should match snapshot. 1`] = `
 <div
   className="container"
 >
@@ -82,6 +82,7 @@ exports[`<Item />: Component Testing <Item />: Conditional render testing Should
       </div>
       <WithStyles(WithStyles(ForwardRef(Button)))
         className="add-to-cart"
+        data-testid="button-add-to-cart"
         disabled={true}
         onClick={[Function]}
         variant="contained"

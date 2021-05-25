@@ -3,6 +3,7 @@ import {shallow} from 'enzyme';
 import Item from './Item';
 
 const mocks = {
+  // PROPS
   data: {
     id: 0,
     name: "Test item",
@@ -13,22 +14,25 @@ const mocks = {
   },
   getOrderFromItem: jest.fn(),
   orderList: [],
+  // STATES
   qty: 0,
   useState: jest.fn(),
+  setQty: jest.fn(),
+  // API
+  // OTHERS
 }
+jest.mock('underscore', () => ({
+  findWhere: jest.fn(),
+}))
 
-// jest.mock('react', () => ({
-//   ...jest.requireActual('react'),
-//   useState: x => [x, mocks.useState],
-//   useEffect: f => f()
-// }));
-// const mockUseState = () => jest.spyOn(React, 'useState').mockReturnValueOnce([0, mocks.useState])
+const mockUseState = () => jest.spyOn(React, 'useState').mockImplementation(init => [init, mocks.setQty]);
 
-describe('<Item />: Component Testing', () => {
+describe('<Item />: Component Testing.', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
-  describe('<Item />: Conditional render testing', () => {
+
+  describe('<Item />: Conditional render testing.', () => {
     it('Should match snapshot.', () => {
       const wrapper = shallow(<Item data={mocks.data} getOrderFromItem={mocks.getOrderFromItem} orderList={mocks.orderList} />);
       expect(wrapper).toMatchSnapshot();
@@ -89,37 +93,62 @@ describe('<Item />: Component Testing', () => {
     });
   });
 
-  describe('<Item />: Event handler testing without mocked states', () => {
-    test('onClick: button-add should trigger handleIncrease', () => {
+  describe('<Item />: Event handler testing without mocked states.', () => {
+    test('onClick: button-add should trigger handleIncrease.', () => {
       const wrapper = shallow(<Item data={mocks.data} getOrderFromItem={mocks.getOrderFromItem} orderList={mocks.orderList} />);
       expect(wrapper.find('[date-testid="span-qty"]').text()).toEqual('0');
       wrapper.find('[data-testid="button-add"]').simulate('click'); // +1
       expect(wrapper.find('[date-testid="span-qty"]').text()).toEqual('1');
     });
-    test('onClick: button-subtract should trigger handleDecrease', () => {
+    test('onClick: button-subtract should trigger handleDecrease.', () => {
       const wrapper = shallow(<Item data={mocks.data} getOrderFromItem={mocks.getOrderFromItem} orderList={mocks.orderList} />);
       expect(wrapper.find('[date-testid="span-qty"]').text()).toEqual('0');
       wrapper.find('[data-testid="button-add"]').simulate('click'); // +1
       wrapper.find('[data-testid="button-subtract"]').simulate('click'); // -1
       expect(wrapper.find('[date-testid="span-qty"]').text()).toEqual('0');
     });
+    test('onClick: button-add-to-cart should trigger handleOrder.', () => {
+      const wrapper = shallow(<Item data={mocks.data} getOrderFromItem={mocks.getOrderFromItem} orderList={mocks.orderList} />);
+      wrapper.find('[data-testid="button-add"]').simulate('click'); // +1
+      wrapper.find('[data-testid="button-add-to-cart"]').simulate('click');
+      expect(mocks.getOrderFromItem).toHaveBeenCalledWith({
+        name: mocks.data.name,
+        price: mocks.data.price,
+        qty: 1,
+        discount: mocks.data.discount,
+        discountedPrice: expect.any(Function),
+        subTotal: expect.any(Function)
+      });
+      const orderData = mocks.getOrderFromItem.mock.calls[0][0];
+      expect(orderData.discountedPrice()).toEqual(mocks.data.price - mocks.data.price * mocks.data.discount);
+      expect(orderData.subTotal()).toEqual(mocks.data.price * 1);
+    });
   });
 
-  // describe('<Item />: Event handler testing', () => {
-    // beforeEach(() => {
-    //   jest.clearAllMocks()
-    // })
-    // test('onClick: button-add should trigger handleIncrease', () => {
-    //   const wrapper = shallow(<Item data={mocks.data} getOrderFromItem={mocks.getOrderFromItem} orderList={mocks.orderList} />);
-    //   wrapper.find('[data-testid="button-add"]').simulate('click');
-    //   expect(mocks.useState).toHaveBeenCalledWith(1);
-    // });
-    // test('onClick: button-subtract should trigger handleDecrease', () => {
-    //   const wrapper = shallow(<Item data={mocks.data} getOrderFromItem={mocks.getOrderFromItem} orderList={mocks.orderList} />);
-    //   wrapper.find('[data-testid="button-add"]').simulate('click');
-    //   wrapper.find('[data-testid="button-subtract"]').simulate('click');
-    //   console.log(mocks.useState.mock.calls)
-    //   expect(mocks.useState.mock.calls[1].length).toBe(0);
-    // });
-  // });
+  describe('<Item />: Event handler testing with mocked states.', () => {
+    beforeEach(() => {
+      mockUseState();
+    });
+
+    test('onClick: button-add should trigger handleIncrease.', () => {
+      const wrapper = shallow(<Item data={mocks.data} getOrderFromItem={mocks.getOrderFromItem} orderList={mocks.orderList} />);
+      wrapper.find('[data-testid="button-add"]').simulate('click'); // +1
+      expect(mocks.setQty).toHaveBeenCalledTimes(1);
+      wrapper.find('[data-testid="button-add"]').simulate('click'); // +1
+      expect(mocks.setQty).toHaveBeenCalledTimes(2);
+    });
+    describe('onClick: handleDecrease.', () => {
+      it('Should decrease qty if qty is greater than 0.', () => {
+        const wrapper = shallow(<Item data={mocks.data} getOrderFromItem={mocks.getOrderFromItem} orderList={mocks.orderList} />);
+        wrapper.find('[data-testid="button-add"]').simulate('click'); // +1
+        wrapper.find('[data-testid="button-subtract"]').simulate('click'); // -1
+        expect(mocks.setQty).toHaveBeenCalledWith(1);
+      });
+      it('Should not decrease qty if qty is not greater than 0.', () => {
+        const wrapper = shallow(<Item data={mocks.data} getOrderFromItem={mocks.getOrderFromItem} orderList={mocks.orderList} />);
+        wrapper.find('[data-testid="button-subtract"]').simulate('click'); // 0
+        expect(mocks.setQty).toHaveBeenCalledTimes(0);
+      });
+    });
+  });
 });
