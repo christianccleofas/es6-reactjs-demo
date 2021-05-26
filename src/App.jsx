@@ -1,12 +1,12 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import "./App.css";
+import { makeStyles, AppBar, Toolbar, Typography, IconButton } from '@material-ui/core';
+// import AppBar from '@material-ui/core/AppBar';
+// import Toolbar from '@material-ui/core/Toolbar';
+// import Typography from '@material-ui/core/Typography';
+// import IconButton from '@material-ui/core/IconButton';
 import _ from 'underscore';
+import "./App.css";
 import CartBadge from './CartBadge/CartBadge';
 import CartDrawer from './CartDrawer/CartDrawer';
 import Menu from './components/container/Menu/Menu';
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonAppBar() {
+export const App = () => {
   const classes = useStyles();
   const [orderList, setOrderList] = React.useState([]);
   const [isCartDrawerOpen, setIsCartDrawerOpen] = React.useState(false);
